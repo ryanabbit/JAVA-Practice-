@@ -1,5 +1,6 @@
 
-
+// The simplest way to use sql and jtable to show up data.
+// Have to use Microsoft JDBC driver. 
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -14,15 +15,15 @@ public class DataTable {
 	   try{
 		   
 	   Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-	   Connection con=DriverManager.getConnection("jdbc:sqlserver://WIN-GJG6QALD7FS:1433;"
-	   		+ "databaseName=aspnet-ResIntel_PrototypeWebForms-20150414022927;user=sa;password=Ryangolf4226");
+	   Connection con=DriverManager.getConnection("jdbc:sqlserver://YourServerName:1433;"
+	   		+ "databaseName=YourDataBaseName;user=sa;password=YourPassword");
 	   ///DatabaseMetaData met=con.getMetaData();
 	   //System.out.println("Database Name:" + met.getDatabaseProductName());
 	   
 	   
 	   Statement stmt = con.createStatement();
 	   // datatable to store the result
-       ResultSet rs = stmt.executeQuery("select * from AspNetUsers");
+       ResultSet rs = stmt.executeQuery("select * from Tables");
 	   JTable table=new JTable(buildTableModel(rs));
 	   
 	   JOptionPane.showMessageDialog(null, new JScrollPane(table));
